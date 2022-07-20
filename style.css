@@ -1,4 +1,5 @@
-*#app {
+/* Title */
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -7,23 +8,52 @@
   margin-top: 60px;
 }
 
+/* Background */
 
-
-
-
-
-
-
-/* /*#movies img, #movie img{
-  width:100%;
+body {
+  background-color: rgb(229, 185, 81);
 }
 
-@media(min-width:960px) {
-  #movies .col-md-3 .well {
-    height: 390px;
-  }
+/* Makes label bold */
 
-  #movies .col-md-3 img {
-    height:240px;
-  }
-} */
+label{
+  font-weight: bold;
+}
+
+/* .class for classes on html */
+
+row{
+  padding-top: 15px;
+}
+
+/* Invalid boxes outlined in red */
+
+input [type="checkbox"]:invalid {
+  border: dashed 2px red;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  vertical-align: top;
+ }
+
+/* Input boxes valid to black */
+
+input:valid,
+textarea:valid {
+  border: 2px solid black;
+}
+
+/* Input boxes valid to black */
+
+input:invalid,
+textarea:invalid {
+  border: 2px dashed red;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  
+}
