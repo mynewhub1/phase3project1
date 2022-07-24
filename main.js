@@ -1,33 +1,44 @@
 import "./style.css";
 import { apiKey } from "./key.js";
 
+/* to declaire variable */
+
 const app = document.querySelector("#app");
+
+/* info that come back from database */
 
 app.innerHTML = `
   <h1>Movie Search Database!</h1>
 `;
+/* prevent error from coming back */
+
+const parent = document.querySelector("#results-container");
+while (parent.firstChild) {
+  parent.removeChild(parent.firstChild);
+}
 
 const search = (ev) => {
   ev.preventDefault();
 
-const parent = document.querySelector("#results-container");
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
+  /* used document.querySelect to get certain info from url */
 
   const title = document.querySelector("#title").value;
   const year = document.querySelector("#year").value;
   const plot = document.querySelector("#plot").value;
-  const url = `https://www.omdbapi.com/?t=${title}&y=${year}&p=plot=${plot}&apikey=${apiKey}`;
+  const url = `https://www.omdbapi.com/?t=${title}&y=${year}&plot=${plot}&apikey=${apiKey}`;
 
   console.log(url);
+
+  /* Get specific movie info from API result */
 
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
 
-      const movieInfo = document.createElement("div");
+      /* specific info  */
+
+      const movieInfo = document.getElementById("results-container");
       movieInfo.innerHTML = `
     <div>
     <h2>${data.Title}</h2>
@@ -49,5 +60,7 @@ const parent = document.querySelector("#results-container");
       console.log("-----------------");
     });
 };
+
+/* waiting for inputted info */
 
 document.querySelector("form").addEventListener("submit", search);
